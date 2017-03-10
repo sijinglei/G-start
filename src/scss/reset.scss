@@ -1,0 +1,18 @@
+/**
+ * author:sijl
+ * time:2017-03-09
+ */
+@import 'font','compass/reset'
+*{
+	margin:0;
+	padding:0;
+}
+ol,li{
+	list-style:none;
+}
+.headline{
+	font-family:$headline-ff;
+}
+.main-sec{
+	font-family:$main-sec-ff;
+}

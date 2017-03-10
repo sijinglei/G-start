@@ -2,11 +2,67 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>G-start</title>
+	<link rel="stylesheet" href="./src/css/index.css">
 </head>
 <body>
+	<div class="background"></div>
 	<div class="view">
-		<h1>Hellow app</h1>
+		<div class="wrapper main-sec">
+			<h1 class="login-head-title">Login</h1>
+			<div class="form-wraper">
+				<form role="form" id="login-form">
+					<div class="form-group">
+						<input type="text" id="txtUserName" placeholder="username">
+						<span class="help-block"></span>
+					</div>
+					<div class="form-group">
+						<input type="password" id="txtPassword" placeholder="password">
+						<span class="help-block"></span>
+					</div>
+					<div class="form-group">
+						<a class="btnSubmit" id="btnSubmit" href="javascript:;">登 录</a>
+					</div>
+				</form>
+			</div>
+			<div class="footer">
+				<p>版权所有 &copy;<a href="https://github.com/login/oauth/authorize?client_id=5ebdca01792057e391ea&state=1&redirect_uri=http://www.yizuocity.com/">sijinglei</a></p>
+			</div>
+		</div>
 	</div>
+	<script src="./src/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+        //检测IE
+        if ('undefined' == typeof (document.body.style.maxHeight)) {
+        	window.location.href = 'ie6update.html';
+        }
+        //初始化表单验证
+        $("#btnSubmit").click(function () {
+        	if (!CheckForm("txtUserName", "用户名")) {
+        		return false;
+        	}
+        	if (!CheckForm("txtPassword", "密码")) {
+        		return false;
+        	}
+        	return true;
+        });
+        var CheckForm = function (_txtId, msg) {
+        	var thisObj = $("#" + _txtId);
+        	if ($.trim(thisObj.val()) == "") {
+        		thisObj.closest('.form-group').addClass('error');
+        		thisObj.siblings('.help-block').text(msg + "不能为空！");
+        		thisObj.focus();
+        		return false;
+        	}
+        	else { 
+        		thisObj.closest('.form-group').removeClass('error');
+        		return true;
+        	}
+
+        }
+    });
+</script>
 </body>
 </html>
